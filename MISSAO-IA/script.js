@@ -4,48 +4,85 @@ const caixaAlternativas = document.querySelector(".caixa-alternativas");
 const caixaResultado = document.querySelector(".caixa-resultado");
 const textoResultado = document.querySelector(".texto-resultado");
 
+// Adicione aqui as alternativas corretas
 const perguntas = [
     {
-        enunciado: "Pergunta 1",
+        enunciado: "Qual a idade máxima que um cachorro pode chegar?",
         alternativas: [
-            "Alternativa 1",
-            "Alternativa 2"
-        ]
+            "15 anos",
+            "20 anos"
+        ],
+        correta: 0 // A primeira alternativa é a correta
     },
     {
-        enunciado: "Pergunta 2",
+        enunciado: "Quantos dias há em um ano bissexto?",
         alternativas: [
-            "Alternativa 1",
-            "Alternativa 2"
-        ]
+            "365",
+            "366"
+        ],
+        correta: 1 // A segunda alternativa é a correta
     },
     {
-        enunciado: "Pergunta 3",
+        enunciado: "Qual é o maior planeta do nosso sistema solar?",
         alternativas: [
-            "Alternativa 1",
-            "Alternativa 2"
-        ]
+            "Terra",
+            "Júpiter"
+        ],
+        correta: 1
     },
     {
-        enunciado: "Pergunta 4",
+        enunciado: "Qual é a capital da França?",
         alternativas: [
-            "Alternativa 1",
-            "Alternativa 2"
-        ]
+            "Paris",
+            "Londres"
+        ],
+        correta: 0
     },
     {
-        enunciado: "Pergunta 5",
+        enunciado: "Qual é a fórmula química da água?",
         alternativas: [
-            "Alternativa 1",
-            "Alternativa 2"
-        ]
+            "H2O",
+            "CO2"
+        ],
+        correta: 0
     }
 ];
 
-// let atual = 0;
-// let perguntaAtual;
-// function mostraPergunta() {
-//     perguntaAtual = perguntas[atual];
-//     caixaPerguntas.textContent = perguntaAtual.enunciado;
-// }
-// mostraPergunta()
+let atual = 0;
+let perguntaAtual;
+let pontuacao = 0; // Inicie a pontuação em 0
+
+function mostraPergunta() {
+    perguntaAtual = perguntas[atual];
+    caixaPerguntas.textContent = perguntaAtual.enunciado;
+    caixaAlternativas.innerHTML = ''; // Limpa as alternativas anteriores
+
+    // Cria botões para as alternativas
+    perguntaAtual.alternativas.forEach((alternativa, index) => {
+        const botao = document.createElement('button');
+        botao.textContent = alternativa;
+        botao.addEventListener('click', () => verificaResposta(index));
+        caixaAlternativas.appendChild(botao);
+    });
+}
+
+function verificaResposta(selecionada) {
+    if (selecionada === perguntaAtual.correta) {
+        pontuacao++;
+    }
+    atual++;
+    if (atual < perguntas.length) {
+        mostraPergunta();
+    } else {
+        mostraResultado();
+    }
+}
+
+function mostraResultado() {
+    caixaPrincipal.style.display = 'none';
+    caixaResultado.style.display = 'block';
+    textoResultado.textContent = `Você acertou ${pontuacao} de ${perguntas.length} perguntas!`;
+}
+
+// Inicializa a primeira pergunta
+mostraPergunta();
