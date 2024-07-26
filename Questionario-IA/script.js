@@ -4,7 +4,6 @@ const caixaAlternativas = document.querySelector(".caixa-alternativas");
 const caixaResultado = document.querySelector(".caixa-resultado");
 const textoResultado = document.querySelector(".texto-resultado");
 
-// Adicione aqui as alternativas corretas
 const perguntas = [
     {
         enunciado: "Qual a idade máxima que um cachorro pode chegar?",
@@ -79,9 +78,24 @@ function verificaResposta(selecionada) {
 }
 
 function mostraResultado() {
-    caixaPrincipal.style.display = 'none';
-    caixaResultado.style.display = 'block';
+    caixaPrincipal.style.display = 'none'; // Esconde a caixa de perguntas
+    caixaResultado.style.display = 'block'; // Mostra a caixa de resultado
+    setTimeout(() => caixaResultado.classList.add('mostrar'), 10); // Adiciona classe para animação
     textoResultado.textContent = `Você acertou ${pontuacao} de ${perguntas.length} perguntas!`;
+
+    const botaoReiniciar = document.createElement('button');
+    botaoReiniciar.textContent = 'Reiniciar';
+    botaoReiniciar.addEventListener('click', () => {
+        atual = 0;
+        pontuacao = 0;
+        caixaResultado.classList.remove('mostrar');
+        caixaResultado.style.display = 'none';
+        caixaPrincipal.style.display = 'block';
+        mostraPergunta();
+    });
+    caixaResultado.innerHTML = ''; // Limpa conteúdo anterior
+    caixaResultado.appendChild(textoResultado);
+    caixaResultado.appendChild(botaoReiniciar);
 }
 
 // Inicializa a primeira pergunta
