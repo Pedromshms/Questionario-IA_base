@@ -1,13 +1,20 @@
 /* Definição de variáveis CSS para as cores usadas no design */
 :root {
-    --cor-fundo: #01080E;/*cor do fundo*/
-    --cor-principal: #0B0D20; /*cores da caixa principal*/
-    --cor-secundaria: #212333;/*cores da caixa secundaria*/
-    --cor-destaque: #2BDEFD;/*cor texto quest/Buttom*/
-    --cor-texto: #fafafa;/*cor do texto pergunta*/
-    --cor-fadeButtom: #e30d6d;/*cor fadebuttom*/
+    --cor-fundo: #01080E;
+    /*cor do fundo*/
+    --cor-principal: #0B0D20;
+    /*cores da caixa principal*/
+    --cor-secundaria: #212333;
+    /*cores da caixa secundaria*/
+    --cor-destaque: #2BDEFD;
+    /*cor texto quest/Buttom*/
+    --cor-texto: #fafafa;
+    /*cor do texto pergunta*/
+    --cor-fadeButtom: #e30d6d;
+    /*cor fadebuttom*/
 }
- /* Configuração do estilo do corpo da página */
+
+/* Configuração do estilo do corpo da página */
 body {
     background-color: var(--cor-fundo);
     color: var(--cor-texto);
@@ -18,6 +25,7 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
+
 /* Estilo da caixa principal */
 .caixa-principal {
     background-color: var(--cor-principal);
@@ -28,10 +36,12 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
 }
- /* Estilo para o cabeçalho principal */
+
+/* Estilo para o cabeçalho principal */
 h1 {
     color: var(--cor-destaque);
 }
+
 /* Estilo para os botões */
 button {
     background-color: var(--cor-destaque);
@@ -44,13 +54,17 @@ button {
     transition: background-color 0.3s;
     border-radius: 10px;
 }
- /* Estilo ao passar o mouse sobre o botão */
+
+/* Estilo ao passar o mouse sobre o botão */
 button:hover {
     background-color: var(--cor-fadeButtom);
+    color: var(--cor-texto);
 }
+
 /* Estilo para a caixa de resultado */
 .caixa-resultado {
-    display: none; /* Inicialmente oculta */
+    display: none;
+    /* Inicialmente oculta */
     text-align: center;
     padding: 20px;
     background-color: var(--cor-secundaria);
@@ -58,11 +72,13 @@ button:hover {
     transition: opacity 0.5s ease-in-out;
     border-radius: 8px;
 }
+
 /* Classe para exibir a caixa de resultado */
 .caixa-resultado.mostrar {
     opacity: 1;
 }
- /* Estilo para o texto do resultado */
+
+/* Estilo para o texto do resultado */
 .texto-resultado {
     font-size: 1.2rem;
     color: var(--cor-texto);
