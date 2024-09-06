@@ -1,0 +1,21 @@
+/* DEFININÇÃO DAS VARIAVEIS CSS PARA CORES*/
+:root {
+    --cor-fundo: #064070;
+    --cor-principal: #0b0d20;
+    --cor-secundaria: #212333;
+    --cor-destaque: #e22b2b;
+    --cor-texto: #e42626;
+    --cor-fadeButtom: #e29716;
+}
+
+/*CONFIGURAÇÃO DO ESTILO DO CORPO DA PAGINA*/
+body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}

@@ -48,3 +48,34 @@ const perguntas = [
         correta: 0
     }
 ];
+
+let atual = 0
+let pergutaAtual;
+let pontuacao = 0;
+
+//FUNÇÃO MOSTRAR PERGUNTAS
+function mostrarPergunta() {
+    perguntaAtual = perguntas[atual];
+    caixaPerguntas.textContent = perguntaAtual.enunciado;
+    caixaAlternativas.innerHTML = "";
+
+    pergutaAtual.alternativas.forEach((alternativas, index) => {
+        const botao = document.createElement("button");
+        botao.addEventListener("click", () => verificaResposta(index));
+        caixaAlternativas.appendChild(botao);
+    });
+}
+
+// FUNÇÃO VERIFICAR RESPOSTA
+function vereficaResposta(Seleciona) {
+    if (selecionda === pergutaAtual.correta) {
+        pontuacao++;
+    }
+    atual++;
+
+    if (atual < perguntas.length) {
+        mostrarPergunta();
+    } else {
+        mostarResultado();
+    }
+}
