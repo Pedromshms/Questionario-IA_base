@@ -4,7 +4,7 @@
     --cor-principal: #0b0d20;
     --cor-secundaria: #212333;
     --cor-destaque: #e22b2b;
-    --cor-texto: #e42626;
+    --cor-texto: #15dc51;
     --cor-fadeButtom: #e29716;
 }
 
@@ -18,4 +18,22 @@ body {
     min-height: 100vh;
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.caixa-principal {
+    background-color: var(--cor-principal);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+h1 {
+    color: var(--cor-destaque);
 }
