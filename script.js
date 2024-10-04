@@ -1,11 +1,11 @@
-// Seleciona os elementos HTML que manipulados
+// Seleciona os elementos HTML que serão manipulados
 const caixaPrincipal = document.querySelector(".caixa-principal");
 const caixaPerguntas = document.querySelector(".caixa-perguntas");
 const caixaAlternativas = document.querySelector(".caixa-alternativas");
 const caixaResultado = document.querySelector(".caixa-resultado");
 const textoResultado = document.querySelector(".texto-resultado");
 
-//Arry de objeto contendo as perguntas e alternativas
+// Array de objeto contendo as perguntas e alternativas
 const perguntas = [
     {
         enunciado: "Qual a idade máxima que um cachorro pode chegar?",
@@ -49,26 +49,27 @@ const perguntas = [
     }
 ];
 
-let atual = 0
-let pergutaAtual;
+let atual = 0;
+let perguntaAtual;
 let pontuacao = 0;
 
-//FUNÇÃO MOSTRAR PERGUNTAS
+// FUNÇÃO MOSTRAR PERGUNTAS
 function mostrarPergunta() {
     perguntaAtual = perguntas[atual];
     caixaPerguntas.textContent = perguntaAtual.enunciado;
     caixaAlternativas.innerHTML = "";
 
-    pergutaAtual.alternativas.forEach((alternativas, index) => {
+    perguntaAtual.alternativas.forEach((alternativa, index) => {
         const botao = document.createElement("button");
+        botao.textContent = alternativa; // Define o texto do botão como a alternativa
         botao.addEventListener("click", () => verificaResposta(index));
         caixaAlternativas.appendChild(botao);
     });
 }
 
 // FUNÇÃO VERIFICAR RESPOSTA
-function vereficaResposta(Seleciona) {
-    if (selecionda === pergutaAtual.correta) {
+function verificaResposta(selecionada) {
+    if (selecionada === perguntaAtual.correta) {
         pontuacao++;
     }
     atual++;
@@ -81,17 +82,19 @@ function vereficaResposta(Seleciona) {
 }
 
 function mostrarResultado() {
-    //esconde a caixa perguntas
+    // Esconde a caixa de perguntas
     caixaPrincipal.style.display = "none";
-    // mostra a caixa resultado
+    // Mostra a caixa de resultado
     caixaResultado.style.display = "block";
 
     setTimeout(() => caixaResultado.classList.add("mostrar"), 10);
     textoResultado.textContent = `Você acertou ${pontuacao} de ${perguntas.length} perguntas!`;
-    //criar botao de reiniciar
+
+    // Criar botão de reiniciar
     const botaoReiniciar = document.createElement("button");
     botaoReiniciar.textContent = "Reiniciar";
-    // adiciona um evento de click ao botão de reiniciar
+
+    // Adiciona um evento de click ao botão de reiniciar
     botaoReiniciar.addEventListener("click", () => {
         atual = 0;
         pontuacao = 0;
@@ -105,4 +108,6 @@ function mostrarResultado() {
     caixaResultado.appendChild(textoResultado);
     caixaResultado.appendChild(botaoReiniciar);
 }
+
+// Inicia o quiz
 mostrarPergunta();
