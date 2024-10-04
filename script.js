@@ -76,6 +76,33 @@ function vereficaResposta(Seleciona) {
     if (atual < perguntas.length) {
         mostrarPergunta();
     } else {
-        mostarResultado();
+        mostrarResultado();
     }
 }
+
+function mostrarResultado() {
+    //esconde a caixa perguntas
+    caixaPrincipal.style.display = "none";
+    // mostra a caixa resultado
+    caixaResultado.style.display = "block";
+
+    setTimeout(() => caixaResultado.classList.add("mostrar"), 10);
+    textoResultado.textContent = `Você acertou ${pontuacao} de ${perguntas.length} perguntas!`;
+    //criar botao de reiniciar
+    const botaoReiniciar = document.createElement("button");
+    botaoReiniciar.textContent = "Reiniciar";
+    // adiciona um evento de click ao botão de reiniciar
+    botaoReiniciar.addEventListener("click", () => {
+        atual = 0;
+        pontuacao = 0;
+        caixaResultado.classList.remove("mostrar");
+        caixaResultado.style.display = "none";
+        caixaPrincipal.style.display = "block";
+        mostrarPergunta();
+    });
+
+    caixaResultado.innerHTML = "";
+    caixaResultado.appendChild(textoResultado);
+    caixaResultado.appendChild(botaoReiniciar);
+}
+mostrarPergunta();

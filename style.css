@@ -1,29 +1,60 @@
-/* DEFININÇÃO DAS VARIAVEIS CSS PARA CORES*/
+/* Definição de variáveis CSS para as cores usadas no design */
 :root {
-    --cor-fundo: #064070;
-    --cor-principal: #0b0d20;
+    --cor-fundo: #010d17;
+        /* cor do fundo */
+        --cor-principal: #0B0D20;
+        /* cores da caixa principal */
     --cor-secundaria: #212333;
-    --cor-destaque: #e22b2b;
-    --cor-texto: #15dc51;
-    --cor-fadeButtom: #e29716;
+    /* cores da caixa secundaria */
+        --cor-destaque: #ffd700;
+        /* cor texto quest/Buttom */
+        --cor-texto: #fafafa;
+        /* cor do texto pergunta */
+        --cor-fadeButtom: #e30d6d;
+        /* cor fadebuttom */
 }
 
-/*CONFIGURAÇÃO DO ESTILO DO CORPO DA PAGINA*/
+/* Configuração do estilo do corpo da página */
+body {
+    position: relative;
+    /* Necessário para posicionar o pseudo-elemento */
+    overflow: hidden;
+    /* Garante que a imagem de fundo não ultrapasse os limites do body */
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Adiciona uma camada de imagem de fundo com blur */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /*background-image: url('image/alunos3b.jpg');
+    /* Caminho da sua imagem */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(2px);
+    /* Ajuste o valor do blur conforme necessário */
+    z-index: -1;
+    /* Coloca a imagem atrás do conteúdo */
+}
+
+/* Configuração do estilo do corpo da página */
 body {
     background-color: var(--cor-fundo);
+    /* Cor de fundo de backup caso a imagem não carregue */
     color: var(--cor-texto);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-}
-img {
-    max-width: 100%;
-    height: auto;
 }
 
+/* Estilo da caixa principal */
 .caixa-principal {
     background-color: var(--cor-principal);
     width: 90%;
@@ -34,6 +65,65 @@ img {
     border-radius: 8px;
 }
 
+/* Estilo para o cabeçalho principal */
 h1 {
     color: var(--cor-destaque);
+}
+/* Estilo para os botões */
+button {
+    background-color: var(--cor-destaque);
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    color: var(--cor-principal);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 10px;
+}
+
+/* Estilo ao passar o mouse sobre o botão */
+button:hover {
+    background-color: var(--cor-fadeButtom);
+    color: var(--cor-texto);
+}
+
+/* Estilo para a caixa de resultado */
+.caixa-resultado {
+    display: none;
+    /* Inicialmente oculta */
+    text-align: center;
+    padding: 20px;
+    background-color: var(--cor-secundaria);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    border-radius: 8px;
+}
+
+/* Classe para exibir a caixa de resultado */
+.caixa-resultado.mostrar {
+    opacity: 1;
+}
+
+/* Estilo para o texto do resultado */
+.texto-resultado {
+    font-size: 1.2rem;
+    color: var(--cor-texto);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+#video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    /*filter: blur(1px);
+    /* Certifica-se de que o vídeo fique atrás de todo o conteúdo */
 }
