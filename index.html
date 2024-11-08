@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Questionário divertido e interativo para testar seu conhecimento.">
     <meta name="keywords" content="questionário, curiosidades, quiz, aprendizado">
+    <meta name="author" content="Seu Nome ou Nome da Empresa"> <!-- Opcional -->
     <link rel="stylesheet" href="style.css">
     <title>Questionário Você Sabia?</title>
 </head>
@@ -14,12 +15,14 @@
     <!-- Fundo de vídeo com loop e sem som -->
     <video autoplay muted loop preload="auto" id="video-background">
         <source src="movie/mslug2-video.mp4" type="video/mp4">
+        <source src="movie/mslug2-video.webm" type="video/webm"> <!-- Adicionado formato webm para compatibilidade -->
         Seu navegador não suporta vídeos HTML5.
     </video>
 
     <!-- Caixa principal do questionário -->
     <div class="caixa-principal">
-        <img src="image/imagen vc sabia.webp" alt="Imagem você sabia" width="200" height="200" />
+        <img src="image/imagen vc sabia.webp" alt="Imagem ilustrativa do questionário 'Você Sabia?'"
+            title="Imagem do questionário 'Você Sabia?'" width="200" height="200" />
         <h1>Questionário Você Sabia?</h1> <!-- Texto da caixa de título -->
 
         <!-- Elementos que receberão o conteúdo do JavaScript -->
@@ -31,6 +34,7 @@
     <div class="caixa-resultado">
         <p class="texto-resultado"></p>
     </div>
+
     <!-- Script do questionário -->
     <script src="script.js"></script>
 </body>
